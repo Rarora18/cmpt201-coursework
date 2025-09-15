@@ -1,0 +1,31 @@
+#define _GNU_SOURCE
+#define _POSIX_C_SOURCE 200809L
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+size_t nread;
+
+int main() {
+  char *buffer = NULL;
+  size_t buffsize = 0;
+  ssize_t nread;
+  char *token;
+  char *saveptr;
+
+  printf("Please enter some text: ");
+  nread = getline(&buffer, &buffsize, stdin);
+
+  if (nread == -1) {
+    perror("getline");
+    exit(EXIT_FAILURE);
+  }
+  token = strtok_r(buffer, " ", &saveptr);
+  printf("Tokens: \n");
+  while (token != NULL) {
+    printf(" %s\n", token);
+    token = strtok_r(NULL, " ", &saveptr);
+  }
+
+  free(buffer);
+  return 0;
+}
