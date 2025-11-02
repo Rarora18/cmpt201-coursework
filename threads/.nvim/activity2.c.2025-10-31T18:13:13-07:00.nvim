@@ -1,0 +1,15 @@
+#include <pthread.h>
+#include <stdio.h>
+#include <unistd.h>
+
+void *thread_funct1() {
+pthread_exit(0);
+}
+
+int main() {
+  pthread_t t1;
+  pthread_t t2;
+  pthread_create(&t1,NULL, thread_funct1, NULL);
+
+
+}

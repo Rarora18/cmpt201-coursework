@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <unistd.h>
+#include 
+struct sigaction{
+
+void handler(){
+printf("CTRL-C pressed");
+}
+
+void (*sa_handler)(void) = handler;
+
+};
+int main(){
+
+while (true){
+sleep();
+}
+
+
+}

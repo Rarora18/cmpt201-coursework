@@ -1,0 +1,7 @@
+#include <pthread.h>
+#include <stdio.h>
+
+void *my_function(void *arg){
+  printf("hi");
+  return NULL;
+}

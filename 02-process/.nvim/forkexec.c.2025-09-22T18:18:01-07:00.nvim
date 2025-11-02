@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+int main() {
+  printf("YAY!\n");
+  pid_t pid = fork();
+  if (pid == 0) {
+    printf("CHILD \n");
+  } else {
+    printf("Parent");
+    execl("/bin/ls", "/bin/ls", "-a", NULL);
+  }
+  printf("/n");
+}

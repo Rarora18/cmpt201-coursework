@@ -1,13 +1,13 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <unistd.h>
-
 int main() {
-  /*fork();*/
-  printf("Start:%d\n", getpid());
+  
   while (true) {
-    printf("Sleeping\n");
-    sleep(2);
+  fork();
+    sleep(5);
+    printf("Sleeping \n");
   }
+
   return 0;
 }

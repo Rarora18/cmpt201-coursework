@@ -3,8 +3,8 @@
 #include <unistd.h>
 
 int main() {
-  /*fork();*/
-  printf("Start:%d\n", getpid());
+  fork();
+
   while (true) {
     printf("Sleeping\n");
     sleep(2);

@@ -1,0 +1,22 @@
+#include <pthread.h>
+#include <stdio.h>
+#include <unistd.h>
+pthread_mutex_t mutex0 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex1 = PTHREAD_MUTEX_INITIALIZER;
+void *funct() { pthread_exit(0); }
+
+void *thread_funct1(){
+pthread_mutex_lock(&mutex0);
+printf("whatevea");
+pthread_mutex_lock(&mutex1);
+printf("whataaa");
+pthread_mutex_unlock(&mutex1);
+pthread_mutex_unlock(&mutex1);
+
+}
+
+int main() {
+  pthread_t t1;
+  pthread_t t2;
+  pthread_create(&t1, NULL, thread_funct1, NULL);
+}

@@ -1,0 +1,38 @@
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+pthread_mutex_t mutexA = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutexB = PTHREAD_MUTEX_INITIALIZER;
+void *funct() { pthread_exit(0); }
+
+void *threadA() {
+  pthread_mutex_lock(&mutexA);
+  printf("ThreadA: mutexA\n");
+  pthread_mutex_lock(&mutexB);
+  printf("ThreadA: mutexB\n");
+  pthread_mutex_unlock(&mutexB);
+  pthread_mutex_unlock(&mutexA);
+  pthread_exit(0);
+}
+void *threadB() {
+
+  pthread_mutex_lock(&mutexB);
+  printf("ThreadB: mutexB\n");
+  pthread_mutex_lock(&mutexA);
+  printf("ThreadB: mutexA\n");
+  pthread_mutex_unlock(&mutexB);
+  pthread_mutex_unlock(&mutexA);
+  pthread_exit(0);
+}
+int main() {
+  pthread_t tA;
+  pthread_t tB;
+  pthread_create(&tA, NULL, threadA, NULL);
+
+  pthread_create(&tB, NULL, threadB, NULL);
+  pthread_join(tA, NULL);
+  pthread_join(tB, NULL);
+
+  exit(EXIT_SUCCESS);
+}

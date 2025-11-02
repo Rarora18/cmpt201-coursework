@@ -2,12 +2,13 @@
 #include <stdio.h>
 #include <unistd.h>
 
+
 int main() {
-  /*fork();*/
-  printf("Start:%d\n", getpid());
+  fork();
+
   while (true) {
-    printf("Sleeping\n");
+    printf("SLeeping");
     sleep(2);
   }
-  return 0;
+ return 0;
 }

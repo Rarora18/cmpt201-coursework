@@ -1,0 +1,23 @@
+#define _POSIX_C_SOURCE 200809L
+#include <stdbool.h>
+#include <stdio.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+int main() {
+
+  printf("Start: %d, PARENT PID: %d", getpid(), getppid());
+  pid_t pid = fork(); 
+
+  if (pid){
+    //PARENT
+  printf("PARENT: PID=%d, child PID=%d", getpid(), pid);
+
+  }
+  else {
+    //CHILD
+    printf("CHILD: PID=%d, parent PID=%d", getpid(), getppid());
+  }
+
+
+}

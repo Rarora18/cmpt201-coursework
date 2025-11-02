@@ -1,0 +1,28 @@
+#define _DEFAULT_SOURCE
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+struct header {
+  uint64_t size;
+  struct header *next;
+};
+
+int main() {
+  // 1. Increase heap size by 256
+  void *initial_break = sbrk(0);
+  printf("Initial program break: %p\n", initial_break);
+  // Increase heap size by 256
+  if (sbrk(256) == (void *)-1) {
+    printf("sbrk failed");
+  }
+
+  // new break:
+
+  void *new_break = sbrk(0);
+  printf("New break is: %p\n", new_break);
+
+struct header *first_block = (struct header*)initial_break;
+struct header *second_block = (struct header*)first_block;
+
+}

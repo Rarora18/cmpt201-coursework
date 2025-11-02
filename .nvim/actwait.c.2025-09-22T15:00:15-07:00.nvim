@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main(){
+
+size_t pid = fork();
+int status = 0;
+if (pid==0){
+execl("/usr/bin/ls", "-a");
+}
+else{
+  waitpid(pid, &wstatus, )
+
+
+}
+
+}

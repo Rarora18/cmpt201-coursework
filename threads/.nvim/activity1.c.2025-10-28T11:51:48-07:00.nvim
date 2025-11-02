@@ -1,0 +1,17 @@
+#include <pthread.h>
+#include <stdio.h>
+#include <unistd.h>
+void *my_thread(void *arg) {
+  printf("hi");
+  return NULL;
+}
+
+int main() {
+  pthread_t thread_ID;
+
+  pthread_create(&thread_ID, NULL, my_thread, NULL);
+
+  sleep(3);
+  printf("DONE");
+  
+}

@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <pthread.h>
+
+void thread_funct1(){
+
+}
+
+int main(){
+pthread_t pthread1;
+pthread_t pthread2;
+
+
+}

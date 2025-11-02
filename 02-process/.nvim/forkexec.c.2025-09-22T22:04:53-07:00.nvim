@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+int main() {
+
+  pid_t pid = fork();
+
+  if (pid) {
+    printf("Parent:\n");
+    execl("/usr/bin/ls", "/bin/ls", "-a", NULL);
+
+  } else {
+    printf("CHILD\n");
+ /*execl("/usr/bin/ls", "/bin/ls", "-alh", NULL);*/
+    //Alternatively we could use execv() with args
+    char *args[] = {"/bin/ls", "-a", "-l", "-h", NULL};
+    execv("usr/bin/ls", args);
+  }
+
+  printf("%d\n", getpid());
+
+  /*printf("YAY!\n");*/
+  /*pid_t pid = fork();*/
+  /*if (pid == 0) {*/
+  /*  printf("CHILD \n");*/
+  /*} else {*/
+  /*  printf("Parent");*/
+  /*  execl("/bin/ls", "/bin/ls", "-a", NULL);*/
+  /*}*/
+  /*printf("/n");*/
+}

@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+#include <pthread.h>
+#include <unistd.h>
+int cnt = 0;
+void *counter_thread (void * arg){
+
+for (int i = 0; i<MAX; i++){
+cnt +=;
+
+}
+
+}
+int main(){
+
+
+}
